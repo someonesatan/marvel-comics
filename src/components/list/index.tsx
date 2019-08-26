@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import Spinner from './Spinner'
+import Spinner from '../Spinner'
 import Comics from './Comics'
-import { Comics as ComicsType, Filter as FilterType } from '../store/comicsList/types'
+import { Comics as ComicsType, Filter as FilterType } from '../../store/comicsList/types'
 import Filter from './Filter'
 
 interface ListProps {
@@ -12,22 +12,19 @@ interface ListProps {
   getComicsList: (clearRecords: boolean, cb: (value: boolean) => void) => void
   setFilter: () => void
 }
+
 interface ListState {
   isLoading: boolean
   documentHeight: number
 }
 
-const Container = styled.div`
-  width: 65vw; 
-  margin: 0 auto;
-  padding: 15px;
-`
+const Container = styled.div``
+
 const ComicsList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 `
-
 
 class List extends React.Component<ListProps, ListState> {
 
@@ -42,7 +39,10 @@ class List extends React.Component<ListProps, ListState> {
 
   componentDidMount() {
     this.scrollListner()
-    this.getComics()
+
+    if (!Object.keys(this.props.comicsList).length) {
+      this.getComics()
+    }
   }
 
   getComics = (clearRecords = false) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Filter as FilterType } from '../store/comicsList/types'
+import { Filter as FilterType } from '../../store/comicsList/types'
 import Field from './Field'
 
 interface FilterProps {

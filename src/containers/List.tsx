@@ -5,7 +5,7 @@ import { AppState } from '../store'
 import { getComicsList } from '../store/comicsList/thunks'
 import { setFilter } from '../store/comicsList/actions'
 import { Comics, Filter } from '../store/comicsList/types'
-import List from '../components/ComicsList'
+import List from '../components/list'
 
 interface ListProps {
   comicsList: Comics
