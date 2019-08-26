@@ -1,25 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-import { Comics as ComicsType } from '../store/comics/types'
+import { ComicsInfo } from '../store/comicsList/types'
 
 const Image = styled.img`
+  filter: invert(15%);
 `
-const Container = styled.div`
-  margin: 8px;
+const Container = styled(Link)`
+  min-width: 300px;
+  min-height: 450px;
+  background-color: #7d7d7d;
+  margin-bottom: 15px;
   position: relative;
   cursor: pointer;
   display: flex;
   &:hover {
     ${Image} {
-      filter: invert(25%);
+      filter: invert(0%) drop-shadow(0px 0px 12px black);
     }
   }
 `
 const TitleBox = styled.div`
   position: absolute;
   bottom: 0;
-  height: 20%;
+  height: 25%;
   width: 100%;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.65);
@@ -27,20 +32,17 @@ const TitleBox = styled.div`
   display: flex;
 `
 const Title = styled.p`
+  margin: 0;
   font-size: 20px;
   color: #fff;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-family: 'Courier New', Courier, monospace;
 `
 
 
-const Comics: React.FC<ComicsType> = ({ title, thumbnail }) => {
+const Comics: React.FC<ComicsInfo> = ({ title, thumbnail, id }) => {
   return (
-    <Container>
-      <Image alt='thumbnail of thecomics' src={`${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`} />
+    <Container to={`/comics/id${id}`}>
+      <Image alt='thumbnail of the comics' src={`${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`} />
       <TitleBox>
         <Title>{title}</Title>
       </TitleBox>

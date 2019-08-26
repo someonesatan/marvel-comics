@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { comicsReducer } from './comics/reducer'
+import { comicsReducer } from './comicsList/reducer'
 
 const rootReducer = combineReducers({
   comics: comicsReducer,

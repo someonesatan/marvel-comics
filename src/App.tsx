@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Container from './components/Container'
+import Router from './Router'
 
 const App: React.FC = () => {
   return (
-    <Container/>
+    <Router />
   )
 }
 
